@@ -1,0 +1,32 @@
+{
+  "name": "cc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "webpack-serve --content",
+    "node": "ts-node-dev --respawn --type-check ./src/server.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "ipfs": "^0.28.2",
+    "ipfs-api": "^20.0.1",
+    "ipfsd-ctl": "^0.32.1",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "redux": "^3.7.2",
+    "redux-saga": "^0.16.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.3.10",
+    "@types/react-dom": "^16.0.5",
+    "awesome-typescript-loader": "^5.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "ts-node": "^5.0.1",
+    "ts-node-dev": "^1.0.0-pre.18",
+    "typescript": "^2.8.1",
+    "webpack": "^4.5.0",
+    "webpack-serve": "^0.3.1"
+  }
+}
