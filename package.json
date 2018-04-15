@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start" : "npx ipfs daemon",
+    "start" : "jsipfs init",
     "test": "webpack-serve --content",
     "node": "ts-node-dev --respawn --type-check ./src/server.ts"
   },
