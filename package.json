@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start" : "jsipfs init && jsipfs daemon && npm run node",
+    "start" : "ts-node ./src/server.ts",
     "test": "webpack-serve --content",
     "node": "ts-node ./src/server.ts"
   },
