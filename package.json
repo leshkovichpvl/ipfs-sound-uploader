@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start" : "jsipfs init && jsipfs daemon",
+    "start" : "jsipfs init && jsipfs daemon && npm run node",
     "test": "webpack-serve --content",
-    "node": "ts-node-dev --respawn --type-check ./src/server.ts"
+    "node": "ts-node ./src/server.ts"
   },
   "author": "",
   "license": "ISC",
