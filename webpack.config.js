@@ -1,11 +1,14 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+const NODE_ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
-    mode: 'development',
+    mode: NODE_ENV,
     performance: {
-        hints: process.env.NODE_ENV === 'production' ? "warning" : false
+        hints: NODE_ENV === 'production' ? "warning" : false
     },
     entry: './src/main.ts',
 
@@ -14,9 +17,9 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     },
 
-    watch: true,
+    watch: 'development' === NODE_ENV,
 
-    devtool: 'eval',
+    devtool: 'development' === NODE_ENV ? 'eval': false,
 
     context: path.resolve(__dirname, './'),
 
@@ -37,9 +40,17 @@ module.exports = {
     },
 
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify(NODE_ENV)
+            }
+        }),
         new HtmlWebpackPlugin({
             template: "index.ejs",
             inject: false
+        }),
+        new CleanWebpackPlugin('./dist', {
+            allowExternal: true
         })
     ]
 };

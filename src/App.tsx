@@ -1,22 +1,61 @@
-
 import * as React from 'react';
-import * as IpfsAPI from 'ipfs-api';
+import { ChangeEvent } from 'react';
 
 
+interface IAppState {
+  highlight: boolean;
+}
 
-const f = IpfsAPI({host: 'http://app-8d7b3d89-ba18-47b7-934e-29609fe74cc1.cleverapps.io/', port: '5002'});
+export class App extends React.Component<undefined, IAppState> {
 
-f.id(function (err, identity) {
-    if (err) {
-        throw err
-    }
-    console.log(identity)
-})
+  state = {
+    highlight: false,
+  };
 
 
+  render() {
+    return <div
+        onDragEnter={this.handlerDragEnter}
+        onDragOver={this.handlerDragEnter}
+        onDragLeave={this.handleDragLeave}
+        onDrop={this.handleDrop}
+    >
+            <form>
+                <p>Drop me files</p>
+                <input type="file" id="file" multiple accept="audio/*" onChange={this.handleChoose}/>
+                <label className="button" htmlFor="file">Select files</label>
+                <progress id="progressBar" max={100} value={0}/>
+            </form>
+        </div>;
+  }
 
-export class App extends React.Component<any, any> {
-    render() {
-        return <div>Hello Word</div>
-    }
+  private handleChoose = (e: ChangeEvent<any>) => this.handleFiles(e.currentTarget.files);
+
+  private handleFiles = (files) => {
+
+  }
+
+  private handlerDragEnter = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    this.setState({ highlight: true });
+  }
+
+  private handleDragLeave = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    this.setState({ highlight: false });
+  }
+
+  private handleDrop = (e) => {
+    this.handleDragLeave(e);
+
+    const dataTransfer = e.dataTransfer;
+
+    this.handleFiles(dataTransfer.files);
+  }
+
+
 }

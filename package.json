@@ -1,11 +1,11 @@
 {
-  "name": "cc",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "ipfs-sound-uploader",
+  "version": "0.0.1",
+  "main": "main.js",
   "scripts": {
-    "start" : "ts-node ./src/server.ts",
-    "test": "webpack-serve --content",
-    "node": "ts-node ./src/server.ts"
+    "start": "cross-env NODE_ENV=development webpack-serve --content",
+    "build": "cross-env NODE_ENV=production webpack -p",
+    "daemon": "./node_modules/ipfs/src/cli/bin.js daemon"
   },
   "author": "",
   "license": "ISC",
@@ -13,20 +13,26 @@
   "dependencies": {
     "ipfs": "^0.28.2",
     "ipfs-api": "^20.0.1",
-    "react": "^16.3.1",
-    "react-dom": "^16.3.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-redux": "^5.0.7",
     "redux": "^3.7.2",
     "redux-saga": "^0.16.0"
   },
   "devDependencies": {
-    "@types/react": "^16.3.10",
+    "@types/react": "^16.3.11",
     "@types/react-dom": "^16.0.5",
+    "@types/react-redux": "^5.0.16",
     "awesome-typescript-loader": "^5.0.0",
+    "clean-webpack-plugin": "^0.1.19",
+    "cross-env": "^5.1.4",
     "html-webpack-plugin": "^3.2.0",
-    "ts-node": "^5.0.1",
-    "ts-node-dev": "^1.0.0-pre.18",
+    "redux-devtools-extension": "^2.13.2",
+    "tslint": "^5.9.1",
+    "tslint-config-airbnb": "^5.8.0",
     "typescript": "^2.8.1",
     "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14",
     "webpack-serve": "^0.3.1"
   }
 }
